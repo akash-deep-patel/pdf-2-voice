@@ -46,7 +46,7 @@ uvicorn audios.app:app --reload
 - **Body (JSON):**
   ```json
   {
-    "api_key": "YOUR_ELEVENLABS_API_KEY",
+    "elevenlabs_api_key": "YOUR_ELEVENLABS_API_KEY",
     "text": "Your text to convert"
   }
   ```
@@ -56,7 +56,7 @@ uvicorn audios.app:app --reload
 
 - **POST** `/convert_file_to_audio`
 - **Form Data:**
-  - `api_key`: Your ElevenLabs API key
+  - `elevenlabs_api_key`: Your ElevenLabs API key
   - `file`: PDF or DOCX file
 - **Response:** MP3 audio file
 
