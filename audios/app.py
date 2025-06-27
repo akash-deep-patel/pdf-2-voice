@@ -13,7 +13,7 @@ import docx2txt
 app = FastAPI()
 
 class ConvertRequest(BaseModel):
-    api_key: str
+    elevenlabs_api_key: str
     text: str
 
 @app.post("/convert_to_audio")
@@ -23,7 +23,7 @@ async def convert_to_audio(request: ConvertRequest):
         filepath = os.path.join("audios", filename)
         os.makedirs("audios", exist_ok=True)
         elevenlabs = ElevenLabs(
-            api_key=request.api_key,
+            api_key=request.elevenlabs_api_key,
         )
 
         audio = elevenlabs.text_to_speech.convert(
@@ -42,7 +42,7 @@ async def convert_to_audio(request: ConvertRequest):
 
 @app.post("/convert_file_to_audio")
 async def convert_file_to_audio(
-    api_key: str = Query(...),
+    elevenlabs_api_key: str = Query(...),
     file: UploadFile = File(...)
 ):
     try:
@@ -73,7 +73,7 @@ async def convert_file_to_audio(
         filepath = os.path.join("audios", filename)
         os.makedirs("audios", exist_ok=True)
         elevenlabs = ElevenLabs(
-            api_key=api_key,
+            api_key=elevenlabs_api_key,
         )
 
         audio = elevenlabs.text_to_speech.convert(
