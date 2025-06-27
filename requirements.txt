@@ -1,0 +1,10 @@
+elevenlabs
+python-dotenv
+PyPDF2
+langchain_ollama
+langchain
+pydub
+fastapi
+uvicorn
+docx2txt
+python-multipart
